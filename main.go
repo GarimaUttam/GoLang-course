@@ -6,8 +6,33 @@ import (
 	"strconv"
 	"strings"
 )
-
+func sayHello(s string){
+	s = "Hello, World"
+}
+func sayHelloPointer(s *string){
+	*s = "Hello, world"
+}
 func main() {
+	var greeting string ="Hello go"
+	sayHello(greeting)
+	//function updates the copy of greeting
+	fmt.Println("After calling sayHello:", greeting)
+
+	sayHelloPointer(&greeting)
+	//function updates greeting's memory location
+	fmt.Println("After calling sayhello Pointer:", greeting)
+
+	//the zero value of all the pointer of data types - string int float bool is ----> nil
+	var zeroPointer *string
+	fmt.Println(zeroPointer)
+
+
+	var myStringPointer *string
+	var myString string
+	myStringPointer = &myString
+	fmt.Println(myStringPointer)
+
+
 	fmt.Println("Go is working")
 	var name string = "Garima Uttam"
 	println(name)
@@ -101,6 +126,12 @@ func main() {
 	fmt.Println(num4)
 	fmt.Println(num5)
 
+	// taking users input
+	fmt.Println("what is your name?")
+	var myname string
+	fmt.Scanln(&myname)
+
+	fmt.Printf("Hello, %v\n",myname)
 
 	
 
