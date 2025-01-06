@@ -149,4 +149,23 @@ func main() {
 		fmt.Println("You are good driver")
 	}
 	
+	//loops
+	for i := 0; i < 5; i++{
+		fmt.Println("garima uttam", i)
+	}
+
+	//data structures
+	var arr [3]string
+	fmt.Println(arr) // in go nop need of for loop to print the array
+
+	arr[0] ="Garima"
+	arr[1] ="uttam"
+	arr[2] ="patel"
+	fmt.Println(arr)
+
+	arr1 := [3]string{"Garima", "Uttam","Patel"}
+	fmt.Println(arr1)
+
+	var twoD [2][3]string
+	fmt.Println(twoD)
 }
