@@ -85,6 +85,22 @@ func main() {
 	fmt.Println(myfloat)
 	fmt.Printf("%T\n",myfloat)
 
+	//const and iota
+	const (
+		_ = iota
+		num11
+		num2
+		num3
+		num4
+		num5
+	)
+
+	fmt.Println(num11)
+	fmt.Println(num2)
+	fmt.Println(num3)
+	fmt.Println(num4)
+	fmt.Println(num5)
+
 
 	
 
