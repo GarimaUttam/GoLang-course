@@ -145,5 +145,8 @@ func main() {
 		fmt.Println("Happy journey")
 	}
 
+	if !isFast && !isSlow {
+		fmt.Println("You are good driver")
+	}
 	
 }
