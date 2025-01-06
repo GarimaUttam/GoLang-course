@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"strconv"
 	"strings"
 )
 
@@ -46,4 +48,45 @@ func main() {
 	fmt.Println(strings.ToUpper(str1))
 	fmt.Println(strings.Contains(str1,"ma"))
 
+	//unsigned int 0 to 256
+	var tinynum uint8 = 32
+	fmt.Println(tinynum)
+
+	// signed int -128 to 127
+	var smallnegNumber int8 = -23
+	fmt.Println(smallnegNumber)
+
+	//float32 and float 64
+	//math functions
+	var number float64 = 2342.0232
+	fmt.Println(math.Round(number))
+	fmt.Println(math.Ceil(number))
+	fmt.Println(math.Floor(number))
+
+	//typecasting
+	fmt.Println(342.0)
+	fmt.Printf("%.3f\n",342.000)
+
+	str := string(80)
+	fmt.Println(str)
+	str11 := fmt.Sprint(80)
+	fmt.Println(str11)
+	// type of  the data
+	fmt.Printf("%T\n", str)
+
+	str22 := strconv.Itoa(10)
+	fmt.Println(str22)
+
+	num1 := "32432"
+	var stringtonumber, _ = strconv.Atoi(num1)
+	fmt.Println(stringtonumber)
+
+	var myfloat, _ = strconv.ParseFloat(num1,64)
+	fmt.Println(myfloat)
+	fmt.Printf("%T\n",myfloat)
+
+
+	
+
+	
 }
