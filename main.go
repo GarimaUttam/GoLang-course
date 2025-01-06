@@ -133,7 +133,17 @@ func main() {
 
 	fmt.Printf("Hello, %v\n",myname)
 
-	
+	// conditional if else
+	isFast := false
+	isSlow := false
+
+	if isFast {
+		fmt.Println("You are going too fast slow down")
+	}else if isSlow{
+		fmt.Println("Thanku for not speeding")	
+	}else{
+		fmt.Println("Happy journey")
+	}
 
 	
 }
