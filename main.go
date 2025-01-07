@@ -6,13 +6,43 @@ import (
 	"strconv"
 	"strings"
 )
+func process(num int, operation func(int) int) int{
+	return operation(num)
+}
+func half(num int) int{
+	return num/2
+}
+func getCount(cartype string, cars map[string]int) int{
+	fmt.Printf("i want %v cars\n", cartype)
+	count := cars[cartype]
+	return count
+}
+
 func sayHello(s string){
 	s = "Hello, World"
 }
 func sayHelloPointer(s *string){
 	*s = "Hello, world"
 }
+
+func sum(numbers ...int)int{
+	total := 0
+	for _, n := range numbers {
+		total += n;
+	}
+	return total
+}
 func main() {
+	result := process(78, half)
+	fmt.Println(result)
+
+	
+	fmt.Println(sum(1,2,2,3,3,))
+	
+	//calling with slice
+	odds := []int{1,2,3,3,2}
+	fmt.Println(sum(odds...))
+
 	var greeting string ="Hello go"
 	sayHello(greeting)
 	//function updates the copy of greeting
@@ -229,5 +259,24 @@ func main() {
 	for _, values := range cars{
 		fmt.Println(values)
 	}
+
+	count := getCount("SUV", cars);
+	fmt.Println(count)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
