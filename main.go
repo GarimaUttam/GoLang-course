@@ -168,4 +168,46 @@ func main() {
 
 	var twoD [2][3]string
 	fmt.Println(twoD)
+
+
+	// for thge unknown size of the arrays called slices
+	var arr2 []string
+	fmt.Println(len(arr2))
+
+	arr3 := []string{"Garima", "uttam"}
+	arr3 = append(arr3, "Patel")
+	fmt.Println(arr3)
+
+	arr4 := make([]string, 3)
+	fmt.Println(len(arr4))
+	fmt.Println("the slice is nil:", arr4 == nil)
+	arr4 = append(arr4, "garima", "gaurav", "uttam", "mammy", "patel")
+	fmt.Println(arr4)
+
+	// cars := make(map[string]int)
+	// cars["sedan"] = 23
+	// cars["SUV"] = 12
+	// cars["convertible"] = 10
+
+	// alternative way
+	cars := map[string]int{
+		"sedan" : 32,
+		"SUV" : 34,
+		"convertible" : 93,
+	}
+
+	fmt.Println("Total number of cars :", cars)
+	// the below expression also returns the bool weather a key is present or not
+	numConvertibles, isConvertibleFound := cars["convertible"]
+	fmt.Println("Convertible found:", isConvertibleFound)
+	if isConvertibleFound{
+		fmt.Printf("i have %v convertibles\n", numConvertibles)
+	}
+
+	// another way to check 
+	if numberOfConvertibles , ok := cars["convertible"]; ok{
+		fmt.Printf("I have %v convertibles\n", numberOfConvertibles)
+	}
+
+
 }
