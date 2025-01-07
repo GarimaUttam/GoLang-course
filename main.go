@@ -32,11 +32,33 @@ func sum(numbers ...int)int{
 	}
 	return total
 }
+func  incrementer() func() int{
+	i := 0
+
+	return func() int { // closures function
+		i++
+		return i
+	}
+}
 func main() {
+
+	nextInt := incrementer()
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	// even if the outer function ois called once the closure function remembers the previous value of the i
+
 	result := process(78, half)
 	fmt.Println(result)
 
-	
+	// anonymous function
+	answer := process(5, func(i int) int {
+		return int(math.Pow(float64(i), 2))
+	})
+	fmt.Println(answer)
+
 	fmt.Println(sum(1,2,2,3,3,))
 	
 	//calling with slice
