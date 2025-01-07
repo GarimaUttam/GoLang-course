@@ -209,5 +209,25 @@ func main() {
 		fmt.Printf("I have %v convertibles\n", numberOfConvertibles)
 	}
 
+	// range returns two parameters index and item
+	for i, person := range arr {
+		fmt.Printf("Index: %v, Name: %v\n", i, person)
+	}
+	for _, person := range arr {
+		fmt.Println(person)
+	}
+
+	// iterating in a map here also range resturns 2 params but key and value
+	for key, value := range cars {
+		fmt.Printf("%v -> %v\n", key,value)
+	}
+	// tp print only the keys
+	for typeofCars := range cars{
+		fmt.Println(typeofCars)
+	}
+	// to print only values
+	for _, values := range cars{
+		fmt.Println(values)
+	}
 
 }
