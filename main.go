@@ -5,7 +5,9 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"time"
 )
+
 func process(num int, operation func(int) int) int{
 	return operation(num)
 }
@@ -40,7 +42,51 @@ func  incrementer() func() int{
 		return i
 	}
 }
+
+//structs
+type bankAccount struct{
+	accountnumber string
+	balance float64
+}
+
+type auditInfo struct{
+	createdAt time.Time
+	lastmodified time.Time
+}
+type accountdetails struct{
+	account string
+	auditInfo
+}
+//reciever or the methods
+// here ba is the value reciever
+func (ba bankAccount) DisplayBalance(){
+	fmt.Printf("account number: %v, balance:%v\n", ba.accountnumber, ba.balance)
+}
+// in this case the ba is the pointer reciver
+func (ba *bankAccount) Deposit(amount float64){
+	ba.balance += amount
+}
 func main() {
+	newaccount := bankAccount{accountnumber: "73463782", balance: 62374.283748}
+	fmt.Println(newaccount)
+
+	newaccount.DisplayBalance()
+	newaccount.Deposit(347637.23)
+	fmt.Printf("New deposit:%.1f\n", newaccount.balance)
+
+	account3 := accountdetails{
+		account: "8475832",
+		auditInfo: auditInfo{createdAt: time.Now(), lastmodified: time.Now()},
+	}
+	fmt.Println(account3.createdAt)
+
+	var account bankAccount
+	fmt.Println(account)
+
+	// account.accountnumber = "343274y732"
+	// account.balance = 243224.343
+	
+	
 
 	nextInt := incrementer()
 	fmt.Println(nextInt())
