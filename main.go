@@ -66,7 +66,39 @@ func (ba bankAccount) DisplayBalance(){
 func (ba *bankAccount) Deposit(amount float64){
 	ba.balance += amount
 }
+
+// for the contructor
+type AuditInfo struct {
+    CreatedAt    time.Time
+    LastModified time.Time
+}
+
+type Customer struct {
+    Name      string
+    AuditInfo AuditInfo
+}
+
+func NewCustomer(name string) *Customer{
+	return &Customer{
+		Name: name,
+		AuditInfo: AuditInfo{CreatedAt: time.Now(), LastModified: time.Now()},
+	}
+}
 func main() {
+	//type assertion
+	var i interface{} = "Hello"
+	s := i.(string)
+	fmt.Println(s)// we are assterting that i is a string and assigning it to s
+	s,ok := i.(string)
+	fmt.Println(s,ok) // ok returns true if the operation succeded or not
+	f, ok := i.(float64)
+	fmt.Println(f,ok)
+	
+	// this will return a panic
+	// f = i.(float64)
+	// fmt.Println(f)
+
+
 	newaccount := bankAccount{accountnumber: "73463782", balance: 62374.283748}
 	fmt.Println(newaccount)
 
