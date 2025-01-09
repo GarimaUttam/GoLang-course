@@ -3,10 +3,18 @@ package main
 import (
 	"fmt"
 	"math"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
 )
+// square represents generic type
+// any type represents empty interface
+func Print[T any](s []T){
+	for _, v := range s{
+		fmt.Println(v)
+	}
+}
 
 func process(num int, operation func(int) int) int{
 	return operation(num)
@@ -363,8 +371,16 @@ func main() {
 	count := getCount("SUV", cars);
 	fmt.Println(count)
 
+	bodytypes := []string{"Sedan", "SUV", "convertible", "hatchback","Coupe"}
 
-
+	bodytypes = slices.DeleteFunc(bodytypes, func(s string) bool{
+		if s == "convertible"{
+			return true
+		}else{
+			return false
+		}
+	})
+	fmt.Println(bodytypes)
 
 
 
