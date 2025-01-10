@@ -8,41 +8,42 @@ import (
 	"strings"
 	"time"
 )
+
 // square represents generic type
 // any type represents empty interface
-func Print[T any](s []T){
-	for _, v := range s{
+func Print[T any](s []T) {
+	for _, v := range s {
 		fmt.Println(v)
 	}
 }
 
-func process(num int, operation func(int) int) int{
+func process(num int, operation func(int) int) int {
 	return operation(num)
 }
-func half(num int) int{
-	return num/2
+func half(num int) int {
+	return num / 2
 }
-func getCount(cartype string, cars map[string]int) int{
+func getCount(cartype string, cars map[string]int) int {
 	fmt.Printf("i want %v cars\n", cartype)
 	count := cars[cartype]
 	return count
 }
 
-func sayHello(s string){
+func sayHello(s string) {
 	s = "Hello, World"
 }
-func sayHelloPointer(s *string){
+func sayHelloPointer(s *string) {
 	*s = "Hello, world"
 }
 
-func sum(numbers ...int)int{
+func sum(numbers ...int) int {
 	total := 0
 	for _, n := range numbers {
-		total += n;
+		total += n
 	}
 	return total
 }
-func  incrementer() func() int{
+func incrementer() func() int {
 	i := 0
 
 	return func() int { // closures function
@@ -51,61 +52,66 @@ func  incrementer() func() int{
 	}
 }
 
-//structs
-type bankAccount struct{
+// structs
+type bankAccount struct {
 	accountnumber string
-	balance float64
+	balance       float64
 }
 
-type auditInfo struct{
-	createdAt time.Time
+type auditInfo struct {
+	createdAt    time.Time
 	lastmodified time.Time
 }
-type accountdetails struct{
+type accountdetails struct {
 	account string
 	auditInfo
 }
-//reciever or the methods
+
+// reciever or the methods
 // here ba is the value reciever
-func (ba bankAccount) DisplayBalance(){
+func (ba bankAccount) DisplayBalance() {
 	fmt.Printf("account number: %v, balance:%v\n", ba.accountnumber, ba.balance)
 }
+
 // in this case the ba is the pointer reciver
-func (ba *bankAccount) Deposit(amount float64){
+func (ba *bankAccount) Deposit(amount float64) {
 	ba.balance += amount
 }
 
 // for the contructor
 type AuditInfo struct {
-    CreatedAt    time.Time
-    LastModified time.Time
+	CreatedAt    time.Time
+	LastModified time.Time
 }
 
 type Customer struct {
-    Name      string
-    AuditInfo AuditInfo
+	Name      string
+	AuditInfo AuditInfo
 }
 
-func NewCustomer(name string) *Customer{
+func NewCustomer(name string) *Customer {
 	return &Customer{
-		Name: name,
+		Name:      name,
 		AuditInfo: AuditInfo{CreatedAt: time.Now(), LastModified: time.Now()},
 	}
 }
 func main() {
+	// bank := goThirdPartyPackage.NewBank("go bank")
+	// fmt.Println(bank)
+	
+
 	//type assertion
 	var i interface{} = "Hello"
 	s := i.(string)
-	fmt.Println(s)// we are assterting that i is a string and assigning it to s
-	s,ok := i.(string)
-	fmt.Println(s,ok) // ok returns true if the operation succeded or not
+	fmt.Println(s) // we are assterting that i is a string and assigning it to s
+	s, ok := i.(string)
+	fmt.Println(s, ok) // ok returns true if the operation succeded or not
 	f, ok := i.(float64)
-	fmt.Println(f,ok)
-	
+	fmt.Println(f, ok)
+
 	// this will return a panic
 	// f = i.(float64)
 	// fmt.Println(f)
-
 
 	newaccount := bankAccount{accountnumber: "73463782", balance: 62374.283748}
 	fmt.Println(newaccount)
@@ -115,7 +121,7 @@ func main() {
 	fmt.Printf("New deposit:%.1f\n", newaccount.balance)
 
 	account3 := accountdetails{
-		account: "8475832",
+		account:   "8475832",
 		auditInfo: auditInfo{createdAt: time.Now(), lastmodified: time.Now()},
 	}
 	fmt.Println(account3.createdAt)
@@ -125,8 +131,6 @@ func main() {
 
 	// account.accountnumber = "343274y732"
 	// account.balance = 243224.343
-	
-	
 
 	nextInt := incrementer()
 	fmt.Println(nextInt())
@@ -145,13 +149,13 @@ func main() {
 	})
 	fmt.Println(answer)
 
-	fmt.Println(sum(1,2,2,3,3,))
-	
+	fmt.Println(sum(1, 2, 2, 3, 3))
+
 	//calling with slice
-	odds := []int{1,2,3,3,2}
+	odds := []int{1, 2, 3, 3, 2}
 	fmt.Println(sum(odds...))
 
-	var greeting string ="Hello go"
+	var greeting string = "Hello go"
 	sayHello(greeting)
 	//function updates the copy of greeting
 	fmt.Println("After calling sayHello:", greeting)
@@ -164,22 +168,20 @@ func main() {
 	var zeroPointer *string
 	fmt.Println(zeroPointer)
 
-
 	var myStringPointer *string
 	var myString string
 	myStringPointer = &myString
 	fmt.Println(myStringPointer)
 
-
 	fmt.Println("Go is working")
 	var name string = "Garima Uttam"
 	println(name)
 	fmt.Println("Welcome to", name)
-	age:= 21
+	age := 21
 	fmt.Printf("My age is %v!\n", age)
 
 	var totalCars int = 50
-	fmt.Println("I have total", totalCars,"of different brands")
+	fmt.Println("I have total", totalCars, "of different brands")
 
 	startingPrice := 30.09
 	fmt.Printf("And each car has the starting price of %v\n", startingPrice)
@@ -207,9 +209,9 @@ func main() {
 	fmt.Println(Ind)
 	fmt.Println(str1[Ind:4])
 
-	fmt.Println(strings.Replace(str3,"Uttam","Patel",1))
+	fmt.Println(strings.Replace(str3, "Uttam", "Patel", 1))
 	fmt.Println(strings.ToUpper(str1))
-	fmt.Println(strings.Contains(str1,"ma"))
+	fmt.Println(strings.Contains(str1, "ma"))
 
 	//unsigned int 0 to 256
 	var tinynum uint8 = 32
@@ -228,7 +230,7 @@ func main() {
 
 	//typecasting
 	fmt.Println(342.0)
-	fmt.Printf("%.3f\n",342.000)
+	fmt.Printf("%.3f\n", 342.000)
 
 	str := string(80)
 	fmt.Println(str)
@@ -244,9 +246,9 @@ func main() {
 	var stringtonumber, _ = strconv.Atoi(num1)
 	fmt.Println(stringtonumber)
 
-	var myfloat, _ = strconv.ParseFloat(num1,64)
+	var myfloat, _ = strconv.ParseFloat(num1, 64)
 	fmt.Println(myfloat)
-	fmt.Printf("%T\n",myfloat)
+	fmt.Printf("%T\n", myfloat)
 
 	//const and iota
 	const (
@@ -269,7 +271,7 @@ func main() {
 	var myname string
 	fmt.Scanln(&myname)
 
-	fmt.Printf("Hello, %v\n",myname)
+	fmt.Printf("Hello, %v\n", myname)
 
 	// conditional if else
 	isFast := false
@@ -277,18 +279,18 @@ func main() {
 
 	if isFast {
 		fmt.Println("You are going too fast slow down")
-	}else if isSlow{
-		fmt.Println("Thanku for not speeding")	
-	}else{
+	} else if isSlow {
+		fmt.Println("Thanku for not speeding")
+	} else {
 		fmt.Println("Happy journey")
 	}
 
 	if !isFast && !isSlow {
 		fmt.Println("You are good driver")
 	}
-	
+
 	//loops
-	for i := 0; i < 5; i++{
+	for i := 0; i < 5; i++ {
 		fmt.Println("garima uttam", i)
 	}
 
@@ -296,17 +298,16 @@ func main() {
 	var arr [3]string
 	fmt.Println(arr) // in go nop need of for loop to print the array
 
-	arr[0] ="Garima"
-	arr[1] ="uttam"
-	arr[2] ="patel"
+	arr[0] = "Garima"
+	arr[1] = "uttam"
+	arr[2] = "patel"
 	fmt.Println(arr)
 
-	arr1 := [3]string{"Garima", "Uttam","Patel"}
+	arr1 := [3]string{"Garima", "Uttam", "Patel"}
 	fmt.Println(arr1)
 
 	var twoD [2][3]string
 	fmt.Println(twoD)
-
 
 	// for thge unknown size of the arrays called slices
 	var arr2 []string
@@ -329,21 +330,21 @@ func main() {
 
 	// alternative way
 	cars := map[string]int{
-		"sedan" : 32,
-		"SUV" : 34,
-		"convertible" : 93,
+		"sedan":       32,
+		"SUV":         34,
+		"convertible": 93,
 	}
 
 	fmt.Println("Total number of cars :", cars)
 	// the below expression also returns the bool weather a key is present or not
 	numConvertibles, isConvertibleFound := cars["convertible"]
 	fmt.Println("Convertible found:", isConvertibleFound)
-	if isConvertibleFound{
+	if isConvertibleFound {
 		fmt.Printf("i have %v convertibles\n", numConvertibles)
 	}
 
-	// another way to check 
-	if numberOfConvertibles , ok := cars["convertible"]; ok{
+	// another way to check
+	if numberOfConvertibles, ok := cars["convertible"]; ok {
 		fmt.Printf("I have %v convertibles\n", numberOfConvertibles)
 	}
 
@@ -357,42 +358,29 @@ func main() {
 
 	// iterating in a map here also range resturns 2 params but key and value
 	for key, value := range cars {
-		fmt.Printf("%v -> %v\n", key,value)
+		fmt.Printf("%v -> %v\n", key, value)
 	}
 	// tp print only the keys
-	for typeofCars := range cars{
+	for typeofCars := range cars {
 		fmt.Println(typeofCars)
 	}
 	// to print only values
-	for _, values := range cars{
+	for _, values := range cars {
 		fmt.Println(values)
 	}
 
-	count := getCount("SUV", cars);
+	count := getCount("SUV", cars)
 	fmt.Println(count)
 
-	bodytypes := []string{"Sedan", "SUV", "convertible", "hatchback","Coupe"}
+	bodytypes := []string{"Sedan", "SUV", "convertible", "hatchback", "Coupe"}
 
-	bodytypes = slices.DeleteFunc(bodytypes, func(s string) bool{
-		if s == "convertible"{
+	bodytypes = slices.DeleteFunc(bodytypes, func(s string) bool {
+		if s == "convertible" {
 			return true
-		}else{
+		} else {
 			return false
 		}
 	})
 	fmt.Println(bodytypes)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
